@@ -33,7 +33,7 @@ export const fetchCurrentWeather = async (
   try {
     const request = { params: { city: selectedCity } };
     const response = await axios.get<CurrentWeatherParams>(
-      "http://localhost:5000/api/weather/getCurrentWeatherData",
+      `${import.meta.env.VITE_CURRENTDATAROUTEURL}`,
       request
     );
     return response.data;
@@ -50,7 +50,7 @@ export const fetchForecastWeather = async (
   try {
     const request = { params: { city: selectedCity, days: days } };
     const response = await axios.get<Forecast>(
-      "http://localhost:5000/api/weather/getForecastWeatherData",
+      `${import.meta.env.VITE_FORECASTDATAURL}`,
       request
     );
     return response.data;
@@ -63,7 +63,7 @@ export const fetchForecastWeather = async (
 export const fetchCity = async () => {
   try {
     const response = await axios.get<LocationParams>(
-      "http://localhost:5000/api/weather/getCity"
+      `${import.meta.env.VITE_CITYDATAURL}`
     );
     return response.data.city;
   } catch (error) {
