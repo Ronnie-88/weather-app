@@ -16,8 +16,12 @@ export default function ForecastCard({
       <div className="flex flex-col items-center grow text-white border rounded-lg max-w-28 py-2 shadow-md shadow-black">
         <p>{day}</p>
         <img src={icon} alt="" />
-        <p className="text-red-300">{maxTemp}</p>
-        <p className="text-green-300">{minTemp}</p>
+        <p className="text-red-300">
+          {maxTemp} <sup>o</sup>
+        </p>
+        <p className="text-green-300">
+          {minTemp} <sup>o</sup>
+        </p>
       </div>
     </>
   );
