@@ -11,7 +11,7 @@ dotenv.config(); // This loads all key-value pairs in .env into process.env so w
 
 // Initialize the Express application
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware to parse incoming JSON requests
 app.use(express.json()); // Tells the Express app to automatically parse JSON data in the request body
