@@ -66,3 +66,5 @@ app.get("/api/weather/getCity", getCity);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`); // Log a message when the server starts successfully
 });
+
+export default app;
