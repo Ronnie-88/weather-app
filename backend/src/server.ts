@@ -49,9 +49,8 @@ app.get("/api/weather", async (req: Request, res: Response) => {
     res.json(response.data); // Send the JSON response data to the client (e.g., weather details for the requested city)
   } catch (error) {
     // If there's an error with the request, send a 500 response with an error message
-    res
-      .status(500)
-      .json({ error: `Failed to fetch weather data error ${error}` });
+    res.status(500).json({ error: `Failed to fetch weather data error` });
+    console.error("Error fetching weather data:", error);
   }
 });
 

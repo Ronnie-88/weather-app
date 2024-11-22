@@ -13,7 +13,8 @@ const getCity = async (req: Request, res: Response) => {
     const city = response.data.city;
     res.json({ city });
   } catch (error) {
-    res.status(500).json({ message: `error: ${error}` });
+    res.status(500).json({ message: `error fetching city` });
+    console.error("Error fetching city data:", error);
   }
 };
 

@@ -41,9 +41,8 @@ const getCurrentWeatherData = async (
     };
     res.json(extractedData);
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: `error in fetching weather data. Error: ${error}` });
+    res.status(500).json({ message: `error in fetching current weather data` });
+    console.error("Error fetching weather data:", error);
   }
 };
 

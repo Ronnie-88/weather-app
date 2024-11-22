@@ -57,7 +57,8 @@ const getForecastWeatherData = async (
   } catch (error) {
     res
       .status(500)
-      .json({ message: `error in fetching weather data. Error: ${error}` });
+      .json({ message: `error in fetching forecast weather data` });
+    console.error("Error fetching weather data:", error);
   }
 };
 
