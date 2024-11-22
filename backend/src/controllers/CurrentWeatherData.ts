@@ -19,10 +19,11 @@ const getCurrentWeatherData = async (
   }
 
   try {
-    const request: Axios.AxiosXHRConfigBase<unknown> = {
+    const request: Axios.AxiosXHRConfig<unknown> = {
+      url: `GET`,
       params: { key: process.env.WEATHER_API_KEY, q: city },
     };
-    const response = await axios.get<WeatherInfo>(
+    const response: Axios.AxiosXHR<WeatherInfo> = await axios.get<WeatherInfo>(
       "https://api.weatherapi.com/v1/current.json",
       request
     );

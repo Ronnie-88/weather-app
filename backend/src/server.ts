@@ -33,13 +33,14 @@ app.get("/api/weather", async (req: Request, res: Response) => {
     //make a get request to the external weatherAPI.com
 
     //this is the axios request containing our query params
-    const request: Axios.AxiosXHRConfigBase<unknown> = {
+    const request: Axios.AxiosXHRConfig<unknown> = {
+      url: `GET`,
       params: {
         key: process.env.WEATHER_API_KEY, // Pass the API key from the environment variable
         q: city, // Pass the city name as the location parameter ("q") found in weather api docs
       },
     };
-    const response = await axios.get(
+    const response: Axios.AxiosXHR<unknown> = await axios.get(
       `https://api.weatherapi.com/v1/current.json`,
       request
     );

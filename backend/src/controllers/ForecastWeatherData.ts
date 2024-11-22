@@ -20,13 +20,15 @@ const getForecastWeatherData = async (
   }
 
   try {
-    const request: Axios.AxiosXHRConfigBase<unknown> = {
+    const request: Axios.AxiosXHRConfig<unknown> = {
+      url: `GET`,
       params: { key: process.env.WEATHER_API_KEY, q: city, days: days },
     };
-    const response = await axios.get<ForecastWeatherInfo>(
-      "https://api.weatherapi.com/v1/forecast.json",
-      request
-    );
+    const response: Axios.AxiosXHR<ForecastWeatherInfo> =
+      await axios.get<ForecastWeatherInfo>(
+        "https://api.weatherapi.com/v1/forecast.json",
+        request
+      );
 
     const forecastWeatherData = response.data.forecast.forecastday;
     type forecastinfo = {
