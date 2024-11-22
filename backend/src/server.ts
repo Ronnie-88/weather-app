@@ -31,7 +31,11 @@ app.get("/api/weather", async (req: Request, res: Response) => {
 
   try {
     //make a get request to the external weatherAPI.com
-
+    if (!process.env.WEATHER_API_KEY) {
+      throw new Error(
+        "WEATHER_API_KEY is not set in the environment variables"
+      );
+    }
     //this is the axios request containing our query params
     const request: Axios.AxiosXHRConfig<unknown> = {
       url: `GET`,
