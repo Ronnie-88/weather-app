@@ -30,7 +30,7 @@ const getCurrentWeatherData = async (
     const currentWeatherData = response.data.current;
     const locationData = response.data.location;
     const day = new Date(locationData.localtime);
-    const dayIndex = day.getUTCDay();
+    const dayIndex = day.getDay();
     const extractedData = {
       temperature: Math.round(currentWeatherData.temp_c),
       city: locationData.name,
