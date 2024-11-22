@@ -26,6 +26,7 @@ app.get("/api/weather", async (req: Request, res: Response) => {
   // Check if the city parameter is provided
   if (!city) {
     res.status(400).json({ error: "City parameter is required" }); // If "city" is missing, send a 400 response with an error message
+    return;
   }
 
   try {
