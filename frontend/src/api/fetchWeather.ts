@@ -1,4 +1,5 @@
 import axios from "axios";
+import getLocation, { CityData } from "./fetchLocation";
 
 interface ConditionParams {
   text: string;
@@ -23,12 +24,8 @@ export interface Forecast {
   extractedData: ForecastWeatherParams[];
 }
 
-export interface LocationParams {
-  city: string;
-}
-
 export const fetchCurrentWeather = async (
-  selectedCity: string
+  selectedCity: string | CityData
 ): Promise<CurrentWeatherParams | undefined> => {
   try {
     const request = { params: { city: selectedCity } };
@@ -44,7 +41,7 @@ export const fetchCurrentWeather = async (
 };
 
 export const fetchForecastWeather = async (
-  selectedCity: string,
+  selectedCity: string | CityData,
   days: number
 ): Promise<Forecast | undefined> => {
   try {
@@ -60,12 +57,10 @@ export const fetchForecastWeather = async (
   }
 };
 
-export const fetchCity = async () => {
+export const fetchCityCoords = async () => {
   try {
-    const response = await axios.get<LocationParams>(
-      `${import.meta.env.VITE_CITYDATAURL}`
-    );
-    return response.data.city;
+    const location = await getLocation();
+    return location;
   } catch (error) {
     alert("Failed to fetch weather data. Please try again.");
     console.error("Error fetching weather data", error);

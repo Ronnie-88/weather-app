@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   CurrentWeatherParams,
-  fetchCity,
+  fetchCityCoords,
   fetchCurrentWeather,
   fetchForecastWeather,
   Forecast,
@@ -29,13 +29,14 @@ function App() {
   useEffect(() => {
     async function fetchLocationWeather() {
       try {
-        const fetchedCity = await fetchCity();
-        if (!fetchedCity) {
+        const fetchedCityCoords = await fetchCityCoords();
+        if (!fetchedCityCoords) {
           return;
         }
-        const fetchedWeatherData = await fetchCurrentWeather(fetchedCity);
+        const coords = `${fetchedCityCoords.latitude}, ${fetchedCityCoords.longitude}`;
+        const fetchedWeatherData = await fetchCurrentWeather(coords);
         const fetchedForecastWeatherData = await fetchForecastWeather(
-          fetchedCity,
+          coords,
           3
         );
         if (fetchedWeatherData && fetchedForecastWeatherData) {
