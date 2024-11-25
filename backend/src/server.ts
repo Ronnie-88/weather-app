@@ -4,7 +4,6 @@ import express, { Request, Response } from "express";
 import getCurrentWeatherData from "./controllers/CurrentWeatherData";
 import cors from "cors";
 import getForecastWeatherData from "./controllers/ForecastWeatherData";
-import getCity from "./controllers/GetCity";
 
 //load environment variables from a .env file into process.env
 dotenv.config(); // This loads all key-value pairs in .env into process.env so we can use them in our code
@@ -60,7 +59,6 @@ app.get("/api/weather", async (req: Request, res: Response) => {
 
 app.get("/api/weather/getCurrentWeatherData", getCurrentWeatherData);
 app.get("/api/weather/getForecastWeatherData", getForecastWeatherData);
-app.get("/api/weather/getCity", getCity);
 
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
